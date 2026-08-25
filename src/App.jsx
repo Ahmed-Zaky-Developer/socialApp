@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 import Layout from './Components/Layouts/Layout';
 import Home from './Components/Home/Home';
 import Profile from './Components/Profile/Profile';
@@ -33,6 +33,7 @@ function App() {
 
 let routing =  createBrowserRouter([
     {  path : "" , element : <Layout/> , children : [
+      { index: true, element: <Navigate to="/home" /> },
       {path : 'home' , element :<ProtectedRoute><Home/></ProtectedRoute>  },
       //home/postdetails/:id ==> انا هنا كده بقولو بعد الهوم والدتيلز ممكن يجي بعديها ايحاجه ممكن تترفع ف اليو ار ال
       {path : 'home/postdetails/:id' , element :<ProtectedRoute><PostDetails/></ProtectedRoute>  },
