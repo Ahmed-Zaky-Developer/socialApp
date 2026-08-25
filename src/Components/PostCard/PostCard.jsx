@@ -48,9 +48,9 @@ export default function PostCard(  {post}  ) {
                 <header className="flex justify-between items-center space-x-3 mb-3">
                 <Link to={`postdetails/${post?.id}`}>
                    <div className='flex gap-3'>
-                     <img src={post?.user.photo} className='w-10 h-10 rounded-full' alt={post?.user.name} />
+                     <img src={post?.user?.photo} className='w-10 h-10 rounded-full' alt={post?.user?.name} />
                      <div>
-                        <p className="font-semibold">{post?.user.name }</p>
+                        <p className="font-semibold">{post?.user?.name }</p>
                         <p className="text-xs text-gray-500">{post?.createdAt}</p>
                      </div>
                    </div>
@@ -58,7 +58,7 @@ export default function PostCard(  {post}  ) {
                 {/* Start DropDown */}
                 <div>
                     {/* هنا كده بهندل اني الدروب داون يظهر بس علي بوستاتي انا بس مش كل البوستات بقارن ما بين الايدي الللي شيرد علي الموقع كله بتاع التوكن وما بين الايدي بتاع اليوز بتاع البوست نفسه*/}
-                    { post.user._id === userData._id && <DropDown id={post?._id} /> }
+                    { post?.user?._id && userData?._id && post?.user?._id === userData?._id && <DropDown id={post?._id} /> }
                 </div>
                 {/* End DropDown */}
                 </header>
@@ -66,7 +66,7 @@ export default function PostCard(  {post}  ) {
                 {post.body && <p className="mb-3">{post.body}</p>} {/* && ==> ده معناه لو كان البوست عنده بادي اعرضه ف برجراف */}
                 {post.image &&  <img src={post?.image} alt={post?.body} className="rounded max-h-96 w-full object-cover mb-3" />}
                 <div className="flex justify-between text-gray-600 text-sm font-semibold">
-                <button onClick={likeFn} className={`flex items-center cursor-pointer space-x-1 hover:text-blue-600 ${likeData?.data.data.liked ?'text-blue-600' : '' }`}>
+                <button onClick={likeFn} className={`flex items-center cursor-pointer space-x-1 hover:text-blue-600 ${likeData?.data?.data?.liked ?'text-blue-600' : '' }`}>
                     <i className="fas fa-thumbs-up" /><span>{post?.likesCount} Like</span>
                 </button>
                 <button className="flex items-center cursor-pointer space-x-1 hover:text-blue-600">
